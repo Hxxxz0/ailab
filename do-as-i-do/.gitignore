@@ -1,0 +1,23 @@
+# ── generated / large data — never commit ──
+reconstruction/outputs/
+reconstruction/sam3_tests/
+reconstruction/weights/
+reconstruction/_setup_logs/
+retargeting/outputs*/
+retargeting/videos/
+
+# model weights / heavy artifacts
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+
+# licensed assets — DO NOT redistribute (MANO license)
+mano_v1_2*
+**/MANO_*.pkl
+**/_DATA/**/*.pkl
+
+# misc
+*.zip
+__pycache__/
+*.pyc
