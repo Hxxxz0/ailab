@@ -169,7 +169,7 @@ def resolve_auto_embodiment(
     dataset_name: str, output_root_dir: str, task: str
 ) -> str:
     """Resolve "auto" embodiment_type from the processed data layout."""
-    if not dataset_name.startswith("do_as_i_do"):
+    if not dataset_name.startswith("video2action"):
         return "bimanual"
 
     pattern = os.path.join(

@@ -1,5 +1,5 @@
 #!/bin/bash
-# ════════════════════════════ do-as-i-do reconstruction ════════════════════════════
+# ════════════════════════════ video2action reconstruction ════════════════════════════
 # End-to-end object reconstruction + pose tracking from a hand-object demo video.
 # Stages (each runs in its own conda env; see config/paths.sh):
 #   0  extract frames (ffmpeg)

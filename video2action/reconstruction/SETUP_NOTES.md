@@ -1,6 +1,6 @@
 # Reconstruction env setup — notes (A800/A100, aliyun, Jensen conda)
 
-Environment configured for the do-as-i-do **reconstruction** pipeline (challenge tasks 2 & 3)
+Environment configured for the video2action **reconstruction** pipeline (challenge tasks 2 & 3)
 on this host. All 4 conda envs live under the **Jensen conda** and persist on CPFS:
 `/mnt/data/cpfs/Jensen/miniconda3/envs/{sam3,sam3d,hawor,tapnet}`.
 
@@ -23,7 +23,7 @@ TAPIR (`bootstapir_checkpoint_v2.pt`).
 
 ```bash
 source /mnt/data/cpfs/Jensen/miniconda3/etc/profile.d/conda.sh   # use the Jensen conda
-cd /mnt/workspace/Jensen/project/ailab/do-as-i-do/reconstruction
+cd /mnt/workspace/Jensen/project/ailab/video2action/reconstruction
 ./run_pipeline.sh whisking/whisking.mp4 125 whisk right
 ```
 `config/paths.sh` is already correct (env names, `CUDA_VISIBLE_DEVICES=0` — GPU7 is busy,

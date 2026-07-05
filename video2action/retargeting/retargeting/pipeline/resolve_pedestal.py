@@ -637,7 +637,7 @@ def resolve_scene_pedestal(
 
 def main(
     output_root_dir: str = f"{ROOT}/../outputs",
-    dataset_name: str = "do_as_i_do",
+    dataset_name: str = "video2action",
     robot_type: str = "sharpa",
     embodiment_type: str = "auto",
     task: str = "",

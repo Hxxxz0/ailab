@@ -1,4 +1,4 @@
-dataset_name: do_as_i_do
+dataset_name: video2action
 embodiment_type: auto
 data_id: 0
 temperature: 1.0

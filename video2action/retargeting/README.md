@@ -1,4 +1,4 @@
-# Do as I Do · Retargeting
+# video2action · Retargeting
 
 Retargets a reconstructed hand-object demo onto a **robot hand**. Given the output directory of
 the [`reconstruction/`](../reconstruction/README.md) pipeline (MANO hand tracks + object mesh +
@@ -14,7 +14,7 @@ retargeting/
 ├── pyproject.toml           # pip package (install with `pip install -e .`)
 ├── config/
 │   ├── default.yaml         # optimizer/simulator defaults
-│   └── override/do_as_i_do.yaml  # dataset-specific tuning
+│   └── override/video2action.yaml  # dataset-specific tuning
 ├── retargeting/             # the package
 │   ├── config.py            # run configuration
 │   ├── pipeline/            # the 5 pipeline stages, in run order

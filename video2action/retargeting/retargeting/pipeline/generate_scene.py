@@ -150,7 +150,7 @@ def _robot_src_signature(src_dir: str) -> str:
 
 def main(
     output_root_dir: str = f"{ROOT}/../outputs",
-    dataset_name: str = "do_as_i_do",
+    dataset_name: str = "video2action",
     robot_type: str = "sharpa",
     embodiment_type: str = "bimanual",
     task: str = "",

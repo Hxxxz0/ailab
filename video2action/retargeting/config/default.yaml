@@ -6,7 +6,7 @@ seed: 0
 
 # === DATASET CONFIGURATION ===
 output_root_dir: outputs
-dataset_name: do_as_i_do
+dataset_name: video2action
 data_id: 0
 model_path: ""
 data_path: ""

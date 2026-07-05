@@ -1,22 +1,14 @@
-<img width="2563" height="742" alt="Frame 261" src="https://github.com/user-attachments/assets/fc36b68d-80af-4c8d-ab09-1e0e44a2193e" />
+# video2action
 
-# Do as I Do
+从手-物演示视频重建、重定向到机器人手、再到部署的完整管线。每个阶段各占一个子目录。
 
-[**Project Page**](https://do-as-i-do.com/) | [**arXiv**](https://arxiv.org/abs/2606.19333) 
+- **`reconstruction/`** — 从手-物演示视频重建物体 + 手部并做 6-DoF 位姿追踪
+  （SAM3 → SAM-3D mesh → MoGe pointmaps → HaWoR → TAPIR → guided diffusion 追踪 → 投影）。
+  详见 [`reconstruction/README.md`](reconstruction/README.md)。对应赛题**任务二/三**。
+- **`retargeting/`** — 把重建出的手-物演示重定向到机器人手
+  （数据处理 → 凸分解 → MJCF 场景生成 → IK → MuJoCo Warp 采样式 MPC），直接消费 reconstruction 的输出。
+  详见 [`retargeting/README.md`](retargeting/README.md)。
+- **`deployment/`** — 把重定向结果在真实机器人上回放：MuJoCo 回放/IK 生成双 UR3e 关节轨迹，
+  再下发到 UR3e 机械臂 + Sharpa Wave 灵巧手。详见 [`deployment/README.md`](deployment/README.md)。
 
-Code release for Do as I Do.
-
-Each part of our pipeline is contained in its own folder. External code references are provided as git submodules with our changes baked in.
-
-- **`reconstruction/`** — object + hand reconstruction and 6-DoF pose tracking from a hand-object
-  demo video (SAM3 → SAM3D mesh → MoGe pointmaps → HaWoR → TAPIR → guided diffusion for tracking → (optionally) projection).
-  Full details in [`reconstruction/README.md`](reconstruction/README.md).
-- **`retargeting/`** — retargets the reconstructed hand-object demo onto a robot hand
-  (dataset processing → convex decomposition → MJCF scene generation → IK → sampling-based MPC
-  in MuJoCo Warp). Consumes the reconstruction pipeline's output directly.
-  Full details in [`retargeting/README.md`](retargeting/README.md).
-- **`deployment/`** — replay a retargeted demo on the real robot: a barebones
-  MuJoCo replay/IK pass turns a retargeting output into a dual-UR3e joint
-  trajectory, which is then streamed to the UR3e arms + Sharpa Wave hands.
-  Full details in [`deployment/README.md`](deployment/README.md).
-
+> 上游 fork 子模块位于 `reconstruction/modules/`（未随本提交包含，见根目录 README 的许可与 upstream 表）。

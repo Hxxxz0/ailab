@@ -376,7 +376,7 @@ def main(
     task: str = "whisking",
     data_id: int = 0,
     embodiment_type: str = "auto",
-    dataset_name: str = "do_as_i_do",
+    dataset_name: str = "video2action",
     force: bool = False,
     start_frame: int = 0,
 ) -> str:

@@ -218,7 +218,7 @@ def flatten_base(hulls: Iterable[MeshPart], thickness: float = 0.01) -> list[Mes
 
 def main(
     output_root_dir: str = f"{retargeting.ROOT}/../outputs",
-    dataset_name: str = "do_as_i_do",
+    dataset_name: str = "video2action",
     robot_type: str = "sharpa",
     embodiment_type: str = "bimanual",
     task: str = "",

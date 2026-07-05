@@ -132,7 +132,7 @@ def _object_mesh_body_id(model, side: str) -> int:
     """Body id of the object mesh the given hand interacts with.
 
     Returns ``{side}_object`` when it carries a collision mesh. For a bimanual
-    shared object (do_as_i_do emits a meshed ``right_object`` plus a meshless
+    shared object (video2action emits a meshed ``right_object`` plus a meshless
     ``left_object`` placeholder), the meshless side falls back to the other
     side's meshed body, so both hands resolve their hand-object distance
     checks against the same real geometry. Returns ``-1`` if neither side has
@@ -153,7 +153,7 @@ def _collidable_floor_geom_id(model) -> int:
 
     The ``"floor"`` plane exists whenever object- or hand-floor collision is on,
     but only an object-collidable floor is a rest surface for the floor penalty.
-    do_as_i_do has the plane (for hand collision) yet no object↔floor pair, so it must
+    video2action has the plane (for hand collision) yet no object↔floor pair, so it must
     be excluded — detected here via the explicit collision pairs.
     """
     floor_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, "floor")
@@ -580,7 +580,7 @@ def precompute_hand_object_geom_mask(config: Config, model_cpu: mujoco.MjModel):
         elif name.startswith("left_pedestal_"):
             is_left_pedestal[i] = True
     # Mark the floor as a rest surface only when objects can collide with it
-    # (do_as_i_do has a hand-only floor that must stay out of this mask).
+    # (video2action has a hand-only floor that must stay out of this mask).
     is_floor = torch.zeros(ngeom, dtype=torch.bool, device=config.device)
     floor_id = _collidable_floor_geom_id(model_cpu)
     if floor_id >= 0:
@@ -1003,7 +1003,7 @@ def _rest_surface_penalty(
 
     Returns one ``(N,)`` penalty tensor per side, keyed by the deduped owning
     side (``"right"``/``"left"``); summing the values gives the total penalty.
-    A bimanual shared object (do_as_i_do) dedups to a single entry under the first
+    A bimanual shared object (video2action) dedups to a single entry under the first
     side that resolves it (``"right"``). Returns an empty dict when the penalty
     is disabled (``scale <= 0`` or this surface is absent from the scene); when
     enabled, every gated object gets an entry every step (zeros during warmup or
@@ -1026,7 +1026,7 @@ def _rest_surface_penalty(
     would fire spuriously.
 
     Iterated per physical object body, deduplicated via `seen`: a bimanual
-    shared object (do_as_i_do) is pointed at by both hands, and iterating per side
+    shared object (video2action) is pointed at by both hands, and iterating per side
     would double-count it.
 
     ``surface`` is ``"pedestal"`` or ``"floor"`` and selects which proximity
@@ -1139,7 +1139,7 @@ def get_reward(
     # Rest/in-hand contact-mismatch penalties: keep the simulated object's
     # contact state consistent with the reference, separately per rest surface
     # (pedestal vs floor). See ``_rest_surface_penalty`` for the branch logic.
-    # The two are mutually exclusive per dataset (do_as_i_do → pedestal) but
+    # The two are mutually exclusive per dataset (video2action → pedestal) but
     # computed independently with their own scale and gate.
     any_pedestal = config._is_right_pedestal_geom | config._is_left_pedestal_geom
     pedestal_pens = _rest_surface_penalty(

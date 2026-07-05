@@ -1,4 +1,4 @@
-# Do as I Do · Reconstruction
+# video2action · Reconstruction
 
 Hand and object **reconstruction + 6-DoF pose tracking** from a single hand-object demo video. Given a
 video, a reference frame, an object name, and the anchor hand, the pipeline segments the object
@@ -27,8 +27,8 @@ reconstruction/
 ## Setup (one time)
 
 ```bash
-GIT_LFS_SKIP_SMUDGE=1 git clone --recurse-submodules https://github.com/malik-group/do-as-i-do.git
-cd do-as-i-do/reconstruction
+GIT_LFS_SKIP_SMUDGE=1 git clone --recurse-submodules https://github.com/malik-group/video2action.git
+cd video2action/reconstruction
 ./setup/00_init_submodules.sh                 # only needed if you didn't clone with recursive submodules
 ./setup/01_create_envs.sh                     # FALLBACK build of all 4 envs (sam3, sam3d, hawor, tapnet) — prefer each fork's own setup, see "Setting up the conda envs" below
 ./setup/02_fetch_weights.sh --download        # fetch weights (needs hf auth)

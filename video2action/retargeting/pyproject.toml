@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "retargeting"
 version = "0.1.0"
-description = "Do as I Do retargeting: hand-object demos to robot hand trajectories"
+description = "video2action retargeting: hand-object demos to robot hand trajectories"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

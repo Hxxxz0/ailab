@@ -15,17 +15,17 @@
 
 ## 1. 放置 MANO 模型(一次性)
 
-HaWoR 需要许可下载的 MANO 权重。从 `do-as-i-do/mano_v1_2.zip` 取出左右手 pkl,放进 HaWoR 的两个 MODEL_PATH:
+HaWoR 需要许可下载的 MANO 权重。从 `video2action/mano_v1_2.zip` 取出左右手 pkl,放进 HaWoR 的两个 MODEL_PATH:
 
 - 右手 → `modules/HaWoR/_DATA/data/mano/MANO_RIGHT.pkl`
 - 左手 → `modules/HaWoR/_DATA/data_left/mano_left/MANO_LEFT.pkl`
 
 ```bash
-cd /mnt/workspace/Jensen/project/ailab/do-as-i-do
+cd /mnt/workspace/Jensen/project/ailab/video2action
 TMP=$(mktemp -d)
 unzip -j -o mano_v1_2.zip \
     "mano_v1_2/models/MANO_RIGHT.pkl" "mano_v1_2/models/MANO_LEFT.pkl" -d "$TMP"
-H=/mnt/workspace/Jensen/project/ailab/do-as-i-do/reconstruction/modules/HaWoR
+H=/mnt/workspace/Jensen/project/ailab/video2action/reconstruction/modules/HaWoR
 cp "$TMP/MANO_RIGHT.pkl" "$H/_DATA/data/mano/MANO_RIGHT.pkl"
 cp "$TMP/MANO_LEFT.pkl"  "$H/_DATA/data_left/mano_left/MANO_LEFT.pkl"
 rm -rf "$TMP"
@@ -54,9 +54,9 @@ rm -rf "$TMP"
 ```bash
 source /mnt/data/cpfs/Jensen/miniconda3/etc/profile.d/conda.sh
 conda activate hawor
-cd /mnt/workspace/Jensen/project/ailab/do-as-i-do/reconstruction/modules/HaWoR
+cd /mnt/workspace/Jensen/project/ailab/video2action/reconstruction/modules/HaWoR
 
-VID=/mnt/workspace/Jensen/project/ailab/do-as-i-do/reconstruction/sam3_tests/track_side1/camera_side_1.mp4
+VID=/mnt/workspace/Jensen/project/ailab/video2action/reconstruction/sam3_tests/track_side1/camera_side_1.mp4
 
 CUDA_VISIBLE_DEVICES=1 TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1 \
 python demo.py \
@@ -105,10 +105,10 @@ run_vis2.py → viewer_utils.ARCTICViewer → HeadlessRenderer → moderngl.crea
 ```bash
 source /mnt/data/cpfs/Jensen/miniconda3/etc/profile.d/conda.sh
 conda activate sam3d
-cd /mnt/workspace/Jensen/project/ailab/do-as-i-do/reconstruction/sam3_tests/track_side1
+cd /mnt/workspace/Jensen/project/ailab/video2action/reconstruction/sam3_tests/track_side1
 
 CUDA_VISIBLE_DEVICES=1 python \
-    /mnt/workspace/Jensen/project/ailab/do-as-i-do/reconstruction/scripts/render_hands_overlay.py \
+    /mnt/workspace/Jensen/project/ailab/video2action/reconstruction/scripts/render_hands_overlay.py \
     --video  camera_side_1.mp4 \
     --npz    camera_side_1/all_hand_meshes.npz \
     --output camera_side_1/hand_overlay.mp4 \

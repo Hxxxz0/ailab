@@ -22,7 +22,7 @@ from retargeting.pipeline.solve_ik import main as solve_ik
 
 CONFIG_DIR = Path(__file__).parent / "config"
 
-# Scene flags for the do_as_i_do dataset: the object rests on an auto-placed
+# Scene flags for the video2action dataset: the object rests on an auto-placed
 # pedestal (with a welded support) rather than directly on the floor.
 OBJECT_FLOOR_COLLISION = False
 HAND_FLOOR_COLLISION = False
@@ -38,7 +38,7 @@ class PipelineConfig:
     task: str = ""
     hand_type: str = "auto"
     data_id: int = 0
-    dataset_name: str = "do_as_i_do"
+    dataset_name: str = "video2action"
     robot_type: str = "sharpa"
     seed: int = 0
     wait_on_finish: bool = True
@@ -54,7 +54,7 @@ def load_mjwp_config(**overrides) -> Config:
     """Build Config from YAML defaults + dataset override + caller overrides."""
     cfg_dict = load_config_yaml(str(CONFIG_DIR / "default.yaml"))
 
-    override_path = CONFIG_DIR / "override" / "do_as_i_do.yaml"
+    override_path = CONFIG_DIR / "override" / "video2action.yaml"
     if override_path.exists():
         cfg_dict.update(load_config_yaml(str(override_path)))
 

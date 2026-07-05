@@ -27,7 +27,7 @@ class Config:
 
     # === DATASET CONFIGURATION ===
     output_root_dir: str = f"{retargeting.ROOT}/../outputs"
-    dataset_name: str = "do_as_i_do"
+    dataset_name: str = "video2action"
     data_id: int = 0
     model_path: str = ""
     data_path: str = ""

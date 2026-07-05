@@ -1,4 +1,4 @@
-# ailab — 从人类演示视频到灵巧手操作（Do-as-I-Do）
+# ailab — 从人类演示视频到灵巧手操作
 
 从单目/多视角**人类操作演示视频**出发，重建**手部**与**被操作物体**的三维形状与
 6-DoF 轨迹，重定向到 **Sharpa 灵巧手**，并在 **IsaacGym** 中训练/追踪与评测。
@@ -15,7 +15,7 @@
 
 ```
 ailab/
-├── video2action/          # 手/物重建 + 重定向 + 部署（原 do-as-i-do 方法实现）
+├── video2action/          # 手/物重建 + 重定向 + 部署管线
 │   ├── reconstruction/    #   任务二/三：手部(HaWoR/MANO) + 物体(SAM3/SAM-3D) 重建与 6-DoF 追踪
 │   │   ├── scripts/       #     第一方管线脚本（hand/ object/ 及公共 stage 脚本）
 │   │   ├── run_hand_task2.sh      / run_object_task3.sh   # 全数据集多卡批处理入口
